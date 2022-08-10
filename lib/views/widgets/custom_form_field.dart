@@ -24,7 +24,7 @@ class CustomFormField extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
         ),
         hintText: hintText,
-        prefixIcon:  Icon(icon),
+        prefixIcon: Icon(icon),
         suffixIcon: isPassword
             ? Consumer<AuthProvider>(
                 builder: (context, authProvider, child) {
@@ -41,8 +41,16 @@ class CustomFormField extends StatelessWidget {
               )
             : null,
       ),
-      obscureText: isPassword ? Provider.of<AuthProvider>(context, listen: false).isObscure : false,
+      obscureText: isPassword
+          ? Provider.of<AuthProvider>(context, listen: false).isObscure
+          : false,
 
+      validator: (value) {
+        if (value == null || value.isEmpty){
+          return 'This field must not be empty';
+        }
+        return null;
+      },
     );
   }
 }

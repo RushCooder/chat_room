@@ -1,3 +1,6 @@
+import 'package:chat_room/auth/auth_service.dart';
+import 'package:chat_room/views/pages/signin_page.dart';
+import 'package:chat_room/views/pages/profile_page.dart';
 import 'package:flutter/material.dart';
 
 class LauncherPage extends StatefulWidget {
@@ -13,10 +16,13 @@ class _LauncherPageState extends State<LauncherPage> {
   @override
   void initState() {
     super.initState();
-
-
-
-
+    Future.delayed(Duration.zero, () {
+      if (AuthService.user != null){
+        Navigator.pushReplacementNamed(context, ProfilePage.routeName);
+      }else{
+        Navigator.pushReplacementNamed(context, LoginPage.routeName);
+      }
+    },);
   }
 
 

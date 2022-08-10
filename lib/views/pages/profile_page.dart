@@ -1,3 +1,4 @@
+import 'package:chat_room/views/widgets/profile_drawer.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -20,6 +21,8 @@ class ProfilePage extends StatelessWidget {
 
         ],
       ),
+
+      drawer:  const ProfileDrawer(),
     );
   }
 }
